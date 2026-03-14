@@ -62,7 +62,7 @@ def  estemated_direction(extracted_dir_path):
                             print(parts[0])
                           
             if(len(x)!=0):
-               estimated,conf= causal_direction(x, y)
+               estimated,conf, SNR_X, SNR_Y = infer_causal_direction(x, y)
                print(file_name,estimated)
                
                estimated_direction.append(estimated)
@@ -94,7 +94,7 @@ def  estemated_direction_2(extracted_dir_path):
                         y= [float(num) for num in row.iloc[2].split()]
                         x = np.array(x)
                         y = np.array(y)                           
-                        estimated,conf = causal_direction(x, y)
+                        estimated,conf,SNR_X,SNR_Y = infer_causal_direction(x, y)
                         print(index,estimated)
                         confidence.append(conf)                    
                         estimated_direction.append(estimated)
@@ -103,5 +103,4 @@ def  estemated_direction_2(extracted_dir_path):
                       t = df.iloc[:, 1].values
                       
     return estimated_direction,confidence,t
-
 
